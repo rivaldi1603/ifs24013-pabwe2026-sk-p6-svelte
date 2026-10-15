@@ -122,6 +122,9 @@
               <img
                 src={previewUrl}
                 alt="Preview Cover"
+                width="480"
+                height="180"
+                decoding="async"
                 class="absolute inset-0 w-full h-full object-cover"
               />
               <div

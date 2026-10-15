@@ -171,6 +171,10 @@
           <img
             src={linkTree.cover}
             alt={linkTree.title}
+            width="896"
+            height="320"
+            fetchpriority="high"
+            decoding="async"
             class="w-full h-full object-cover"
           />
           <div class="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent"></div>
@@ -213,6 +217,10 @@
               <img
                 src={linkTree.author.photo}
                 alt={linkTree.author.name}
+                width="28"
+                height="28"
+                loading="lazy"
+                decoding="async"
                 class="w-7 h-7 rounded-full object-cover border border-slate-200"
               />
             {:else}

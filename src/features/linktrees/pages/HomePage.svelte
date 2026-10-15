@@ -304,6 +304,10 @@
                 <img
                   src={item.cover}
                   alt={item.title}
+                  width="360"
+                  height="160"
+                  loading="lazy"
+                  decoding="async"
                   class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                 />
               {:else}
@@ -345,6 +349,10 @@
                     <img
                       src={item.author.photo}
                       alt={item.author.name}
+                      width="24"
+                      height="24"
+                      loading="lazy"
+                      decoding="async"
                       class="w-6 h-6 rounded-full object-cover border border-slate-200"
                     />
                   {:else}

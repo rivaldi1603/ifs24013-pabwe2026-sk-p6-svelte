@@ -115,6 +115,9 @@
           <img
             src={profile.photo}
             alt={profile.name}
+            width="96"
+            height="96"
+            decoding="async"
             class="w-24 h-24 rounded-full object-cover border-4 border-white shadow-md ring-2 ring-indigo-100"
           />
         {:else}

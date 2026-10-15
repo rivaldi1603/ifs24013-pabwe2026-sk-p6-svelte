@@ -27,19 +27,23 @@ export default defineConfig(({ mode }) => {
         output: {
           manualChunks(id) {
             const normalizedId = id.replace(/\\/g, "/");
-            if (normalizedId.includes("/node_modules/lucide-svelte/")) {
-              return "lucide";
+            if (normalizedId.includes("node_modules/svelte")) {
+              return "framework";
             }
-            if (normalizedId.includes("/node_modules/svelte/")) {
-              return "vendor-svelte";
+            if (normalizedId.includes("node_modules/lucide-svelte")) {
+              return "icons";
             }
-            if (normalizedId.includes("/src/features/auth/")) {
-              return "auth";
+            if (
+              normalizedId.includes("src/helpers") ||
+              normalizedId.includes("src/hooks") ||
+              normalizedId.includes("src/router.js")
+            ) {
+              return "shared";
             }
-            if (normalizedId.includes("/src/features/users/")) {
+            if (normalizedId.includes("src/features/users")) {
               return "users";
             }
-            if (normalizedId.includes("/src/features/linktrees/")) {
+            if (normalizedId.includes("src/features/linktrees")) {
               return "linktrees";
             }
           },

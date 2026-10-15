@@ -82,6 +82,10 @@
                 <img
                   src={u.photo}
                   alt={u.name}
+                  width="48"
+                  height="48"
+                  loading="lazy"
+                  decoding="async"
                   class="w-12 h-12 rounded-full object-cover border border-slate-200 shrink-0"
                 />
               {:else}
