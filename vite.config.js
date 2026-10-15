@@ -43,6 +43,12 @@ export default defineConfig(({ mode }) => {
             if (normalizedId.includes("src/features/users")) {
               return "users";
             }
+            if (normalizedId.includes("src/features/linktrees/modals")) {
+              return "linktrees-modals";
+            }
+            if (normalizedId.includes("src/features/linktrees/pages/DetailPage")) {
+              return "linktrees-detail";
+            }
             if (normalizedId.includes("src/features/linktrees")) {
               return "linktrees";
             }
