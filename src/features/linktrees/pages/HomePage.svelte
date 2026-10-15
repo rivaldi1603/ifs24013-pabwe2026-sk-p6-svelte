@@ -116,7 +116,7 @@
         <h1 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
           Delcom Link Tree
         </h1>
-        <p class="text-sm text-slate-500 mt-1">
+        <p class="text-sm text-slate-600 mt-1">
           Kumpulkan, kelola, dan bagikan seluruh tautan penting Anda dalam satu tempat.
         </p>
       </div>
@@ -148,12 +148,12 @@
     <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
       <div class="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-xs flex items-center justify-between">
         <div>
-          <p class="text-xs font-semibold uppercase tracking-wider text-slate-400">
+          <p class="text-xs font-semibold uppercase tracking-wider text-slate-600">
             Total Link Tree
           </p>
-          <h3 class="text-3xl font-black text-slate-800 mt-1">
+          <p class="text-3xl font-black text-slate-800 mt-1">
             {totalLinkTrees}
-          </h3>
+          </p>
         </div>
         <div class="w-12 h-12 rounded-2xl bg-indigo-50 text-indigo-600 flex items-center justify-center">
           <Link size={24} strokeWidth={2.2} />
@@ -162,12 +162,12 @@
 
       <div class="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-xs flex items-center justify-between">
         <div>
-          <p class="text-xs font-semibold uppercase tracking-wider text-slate-400">
+          <p class="text-xs font-semibold uppercase tracking-wider text-slate-600">
             Total Tautan
           </p>
-          <h3 class="text-3xl font-black text-sky-600 mt-1">
+          <p class="text-3xl font-black text-sky-600 mt-1">
             {totalLinksCount}
-          </h3>
+          </p>
         </div>
         <div class="w-12 h-12 rounded-2xl bg-sky-50 text-sky-600 flex items-center justify-center">
           <ExternalLink size={24} strokeWidth={2.2} />
@@ -176,12 +176,12 @@
 
       <div class="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-xs flex items-center justify-between">
         <div>
-          <p class="text-xs font-semibold uppercase tracking-wider text-slate-400">
+          <p class="text-xs font-semibold uppercase tracking-wider text-slate-600">
             Link Tree Publik
           </p>
-          <h3 class="text-3xl font-black text-emerald-600 mt-1">
+          <p class="text-3xl font-black text-emerald-600 mt-1">
             {publicCount}
-          </h3>
+          </p>
         </div>
         <div class="w-12 h-12 rounded-2xl bg-emerald-50 text-emerald-600 flex items-center justify-center">
           <Globe size={24} strokeWidth={2.2} />
@@ -195,26 +195,27 @@
       <div class="relative flex-1 max-w-md">
         <Search
           size={18}
-          class="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400"
+          class="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-500"
         />
         <input
           type="text"
           data-testid="search-input"
           bind:value={searchQuery}
+          aria-label="Cari Link Tree berdasarkan judul atau deskripsi"
           placeholder="Cari Link Tree berdasarkan judul atau deskripsi..."
-          class="w-full pl-10 pr-4 py-2.5 rounded-xl border border-slate-200 text-sm focus:border-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-600/20 transition-all placeholder:text-slate-400"
+          class="w-full pl-10 pr-4 py-2.5 rounded-xl border border-slate-200 text-sm focus:border-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-600/20 transition-all placeholder:text-slate-500"
         />
       </div>
 
       <!-- Filter tabs -->
-      <div class="flex items-center gap-1.5 bg-slate-100 p-1 rounded-xl self-start md:self-auto">
+      <nav aria-label="Filter Link Tree" class="flex items-center gap-1.5 bg-slate-100 p-1 rounded-xl self-start md:self-auto">
         <button
           type="button"
           data-testid="filter-all-btn"
           on:click={() => (filter = "")}
           class="px-3.5 py-1.5 text-xs font-semibold rounded-lg transition-all {filter === ''
             ? 'bg-white text-indigo-700 shadow-xs'
-            : 'text-slate-600 hover:text-slate-900'}"
+            : 'text-slate-700 hover:text-slate-900'}"
         >
           Semua Link Tree
         </button>
@@ -224,12 +225,14 @@
           on:click={() => (filter = "1")}
           class="px-3.5 py-1.5 text-xs font-semibold rounded-lg transition-all {filter === '1'
             ? 'bg-white text-indigo-700 shadow-xs'
-            : 'text-slate-600 hover:text-slate-900'}"
+            : 'text-slate-700 hover:text-slate-900'}"
         >
           Milik Saya
         </button>
-      </div>
+      </nav>
     </div>
+
+    <h2 class="sr-only">Daftar Koleksi Link Tree</h2>
 
     <!-- Content Grid -->
     {#if loading && filteredLinkTrees.length === 0}
@@ -253,7 +256,7 @@
           <Link size={32} />
         </div>
         <h3 class="text-lg font-bold text-slate-800">Tidak Ada Link Tree</h3>
-        <p class="text-sm text-slate-500 mt-1 max-w-sm mx-auto">
+        <p class="text-sm text-slate-600 mt-1 max-w-sm mx-auto">
           {searchQuery
             ? "Tidak ada link tree yang cocok dengan kata kunci pencarian Anda."
             : "Belum ada link tree yang dibuat. Mulai buat kumpulan tautan Anda sekarang!"}
@@ -281,7 +284,7 @@
             type="button"
             data-testid="reload-empty-btn"
             on:click={loadData}
-            class="px-3.5 py-2 rounded-xl text-sm font-semibold text-slate-600 hover:bg-slate-100 transition-colors inline-flex items-center gap-1.5"
+            class="px-3.5 py-2 rounded-xl text-sm font-semibold text-slate-700 hover:bg-slate-100 transition-colors inline-flex items-center gap-1.5"
           >
             <RotateCcw size={16} />
             <span>Muat Ulang</span>
@@ -330,13 +333,13 @@
                 >
                   {item.title}
                 </h3>
-                <p class="text-xs text-slate-500 mt-1.5 line-clamp-2 leading-relaxed">
+                <p class="text-xs text-slate-600 mt-1.5 line-clamp-2 leading-relaxed">
                   {item.description || "Tidak ada deskripsi."}
                 </p>
               </div>
 
               <!-- Author & Date -->
-              <div class="pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500">
+              <div class="pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-slate-600">
                 <div class="flex items-center gap-2">
                   {#if item.author?.photo}
                     <img
@@ -372,8 +375,9 @@
                   type="button"
                   data-testid={`delete-linktree-btn-${item.id}`}
                   on:click={() => handleDeleteOne(item.id)}
-                  class="p-2 rounded-xl text-slate-400 hover:text-red-600 hover:bg-red-50 transition-colors"
+                  class="p-2 rounded-xl text-slate-600 hover:text-red-600 hover:bg-red-50 transition-colors"
                   title="Hapus Link Tree"
+                  aria-label="Hapus Link Tree"
                 >
                   <Trash2 size={16} />
                 </button>

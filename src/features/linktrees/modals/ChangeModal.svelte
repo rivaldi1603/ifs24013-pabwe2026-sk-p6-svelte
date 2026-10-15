@@ -78,6 +78,9 @@
 {#if show}
   <div
     data-testid="change-linktree-modal"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="change-modal-title"
     class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/50 backdrop-blur-xs animate-in fade-in duration-200"
   >
     <div
@@ -94,10 +97,10 @@
             <PenLine size={20} strokeWidth={2.5} />
           </div>
           <div>
-            <h3 class="text-base font-bold text-slate-800">
+            <h2 id="change-modal-title" class="text-base font-bold text-slate-800">
               Ubah Data Link Tree
-            </h3>
-            <p class="text-xs text-slate-500">
+            </h2>
+            <p class="text-xs text-slate-600">
               Perbarui judul, tipe, dan deskripsi kumpulan tautan
             </p>
           </div>
@@ -106,7 +109,8 @@
           type="button"
           data-testid="close-change-modal-btn"
           on:click={handleClose}
-          class="p-2 rounded-xl text-slate-400 hover:text-slate-600 hover:bg-slate-200/60 transition-colors"
+          aria-label="Tutup Dialog"
+          class="p-2 rounded-xl text-slate-600 hover:text-slate-900 hover:bg-slate-200/60 transition-colors"
         >
           <X size={20} />
         </button>
@@ -120,7 +124,7 @@
         <div>
           <label
             for="change-title"
-            class="block text-xs font-semibold uppercase tracking-wider text-slate-600 mb-1.5"
+            class="block text-xs font-semibold uppercase tracking-wider text-slate-700 mb-1.5"
           >
             Judul Link Tree
           </label>
@@ -136,7 +140,7 @@
         <div>
           <label
             for="change-type"
-            class="block text-xs font-semibold uppercase tracking-wider text-slate-600 mb-1.5"
+            class="block text-xs font-semibold uppercase tracking-wider text-slate-700 mb-1.5"
           >
             Tipe Akses
           </label>
@@ -156,7 +160,7 @@
         <div>
           <label
             for="change-desc"
-            class="block text-xs font-semibold uppercase tracking-wider text-slate-600 mb-1.5"
+            class="block text-xs font-semibold uppercase tracking-wider text-slate-700 mb-1.5"
           >
             Deskripsi
           </label>
@@ -175,7 +179,7 @@
             type="button"
             data-testid="cancel-change-modal-btn"
             on:click={handleClose}
-            class="px-4 py-2.5 rounded-xl text-sm font-semibold text-slate-600 hover:bg-slate-100 transition-colors"
+            class="px-4 py-2.5 rounded-xl text-sm font-semibold text-slate-700 hover:bg-slate-100 transition-colors"
           >
             Batal
           </button>

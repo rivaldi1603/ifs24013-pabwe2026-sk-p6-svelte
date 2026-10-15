@@ -96,6 +96,9 @@
         type="button"
         data-testid="profile-dropdown-button"
         on:click={() => (dropdownOpen = !dropdownOpen)}
+        aria-expanded={dropdownOpen}
+        aria-haspopup="true"
+        aria-label="Menu Pengguna"
         class="flex items-center gap-3 p-1.5 pr-3 rounded-full border border-slate-200 hover:border-slate-300 hover:bg-slate-50 transition-all focus:outline-none focus:ring-2 focus:ring-indigo-500/20"
       >
         {#if profile?.photo}
@@ -116,13 +119,13 @@
           <span class="text-sm font-semibold text-slate-800 leading-tight">
             {profile?.name || "Pengguna"}
           </span>
-          <span class="text-xs text-slate-500 leading-tight">
+          <span class="text-xs text-slate-600 leading-tight">
             {profile?.email || ""}
           </span>
         </div>
         <ChevronDown
           size={16}
-          class="text-slate-400 transition-transform duration-200 {dropdownOpen
+          class="text-slate-600 transition-transform duration-200 {dropdownOpen
             ? 'rotate-180'
             : ''}"
         />
@@ -135,7 +138,7 @@
         >
           <div class="px-3 py-2 sm:hidden">
             <p class="text-sm font-semibold text-slate-800">{profile?.name}</p>
-            <p class="text-xs text-slate-500 truncate">{profile?.email}</p>
+            <p class="text-xs text-slate-600 truncate">{profile?.email}</p>
           </div>
 
           <div class="py-1">
@@ -145,7 +148,7 @@
               on:click={handleProfileClick}
               class="w-full flex items-center gap-2.5 px-3 py-2 text-sm text-slate-700 rounded-xl hover:bg-slate-100 transition-colors text-left"
             >
-              <User size={18} class="text-slate-500" />
+              <User size={18} class="text-slate-600" />
               Profil Saya
             </button>
           </div>
@@ -155,9 +158,9 @@
               type="button"
               data-testid="dropdown-logout-button"
               on:click={handleLogoutClick}
-              class="w-full flex items-center gap-2.5 px-3 py-2 text-sm text-red-600 rounded-xl hover:bg-red-50 transition-colors text-left"
+              class="w-full flex items-center gap-2.5 px-3 py-2 text-sm text-red-700 rounded-xl hover:bg-red-50 transition-colors text-left"
             >
-              <LogOut size={18} class="text-red-500" />
+              <LogOut size={18} class="text-red-600" />
               Keluar
             </button>
           </div>

@@ -64,6 +64,9 @@
 {#if show}
   <div
     data-testid="add-linktree-modal"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="add-modal-title"
     class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/50 backdrop-blur-xs animate-in fade-in duration-200"
   >
     <div
@@ -80,10 +83,10 @@
             <Plus size={20} strokeWidth={2.5} />
           </div>
           <div>
-            <h3 class="text-base font-bold text-slate-800">
+            <h2 id="add-modal-title" class="text-base font-bold text-slate-800">
               Tambah Link Tree Baru
-            </h3>
-            <p class="text-xs text-slate-500">
+            </h2>
+            <p class="text-xs text-slate-600">
               Buat halaman kumpulan tautan baru Anda
             </p>
           </div>
@@ -92,7 +95,8 @@
           type="button"
           data-testid="close-add-modal-btn"
           on:click={handleClose}
-          class="p-2 rounded-xl text-slate-400 hover:text-slate-600 hover:bg-slate-200/60 transition-colors"
+          aria-label="Tutup Dialog"
+          class="p-2 rounded-xl text-slate-600 hover:text-slate-900 hover:bg-slate-200/60 transition-colors"
         >
           <X size={20} />
         </button>
@@ -106,7 +110,7 @@
         <div>
           <label
             for="add-title"
-            class="block text-xs font-semibold uppercase tracking-wider text-slate-600 mb-1.5"
+            class="block text-xs font-semibold uppercase tracking-wider text-slate-700 mb-1.5"
           >
             Judul Link Tree
           </label>
@@ -116,14 +120,14 @@
             type="text"
             bind:value={title}
             placeholder="Misal: Profil & Media Sosial Saya"
-            class="w-full px-4 py-2.5 rounded-xl border border-slate-200 bg-slate-50/50 text-slate-800 placeholder-slate-400 text-sm focus:bg-white focus:border-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-600/20 transition-all"
+            class="w-full px-4 py-2.5 rounded-xl border border-slate-200 bg-slate-50/50 text-slate-800 placeholder:text-slate-500 text-sm focus:bg-white focus:border-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-600/20 transition-all"
           />
         </div>
 
         <div>
           <label
             for="add-type"
-            class="block text-xs font-semibold uppercase tracking-wider text-slate-600 mb-1.5"
+            class="block text-xs font-semibold uppercase tracking-wider text-slate-700 mb-1.5"
           >
             Tipe Akses
           </label>
@@ -143,7 +147,7 @@
         <div>
           <label
             for="add-desc"
-            class="block text-xs font-semibold uppercase tracking-wider text-slate-600 mb-1.5"
+            class="block text-xs font-semibold uppercase tracking-wider text-slate-700 mb-1.5"
           >
             Deskripsi
           </label>
@@ -153,7 +157,7 @@
             bind:value={description}
             rows="4"
             placeholder="Deskripsikan tujuan kumpulan tautan ini..."
-            class="w-full px-4 py-2.5 rounded-xl border border-slate-200 bg-slate-50/50 text-slate-800 placeholder-slate-400 text-sm focus:bg-white focus:border-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-600/20 transition-all"
+            class="w-full px-4 py-2.5 rounded-xl border border-slate-200 bg-slate-50/50 text-slate-800 placeholder:text-slate-500 text-sm focus:bg-white focus:border-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-600/20 transition-all"
           ></textarea>
         </div>
 
@@ -163,7 +167,7 @@
             type="button"
             data-testid="cancel-add-modal-btn"
             on:click={handleClose}
-            class="px-4 py-2.5 rounded-xl text-sm font-semibold text-slate-600 hover:bg-slate-100 transition-colors"
+            class="px-4 py-2.5 rounded-xl text-sm font-semibold text-slate-700 hover:bg-slate-100 transition-colors"
           >
             Batal
           </button>

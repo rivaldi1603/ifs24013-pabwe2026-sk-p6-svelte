@@ -76,6 +76,9 @@
 {#if show && activeId}
   <div
     data-testid="change-cover-modal"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="change-cover-modal-title"
     class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/50 backdrop-blur-xs animate-in fade-in duration-200"
   >
     <div
@@ -90,15 +93,16 @@
           >
             <ImagePlus size={18} strokeWidth={2.5} />
           </div>
-          <h3 class="text-base font-bold text-slate-800">
+          <h2 id="change-cover-modal-title" class="text-base font-bold text-slate-800">
             Ubah Cover Link Tree
-          </h3>
+          </h2>
         </div>
         <button
           type="button"
           data-testid="close-cover-modal-btn"
           on:click={handleClose}
-          class="p-1.5 rounded-lg text-slate-400 hover:text-slate-600 hover:bg-slate-100 transition-colors"
+          aria-label="Tutup Dialog"
+          class="p-1.5 rounded-lg text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition-colors"
         >
           <X size={18} />
         </button>
@@ -134,7 +138,7 @@
               <p class="text-sm font-medium text-slate-700">
                 Klik untuk unggah gambar
               </p>
-              <p class="text-xs text-slate-400 mt-1">
+              <p class="text-xs text-slate-600 mt-1">
                 PNG, JPG atau WEBP (Maksimal 1MB)
               </p>
             {/if}
@@ -155,7 +159,7 @@
             type="button"
             data-testid="cancel-cover-modal-btn"
             on:click={handleClose}
-            class="px-4 py-2.5 rounded-xl text-sm font-semibold text-slate-600 hover:bg-slate-100 transition-colors"
+            class="px-4 py-2.5 rounded-xl text-sm font-semibold text-slate-700 hover:bg-slate-100 transition-colors"
           >
             Batal
           </button>

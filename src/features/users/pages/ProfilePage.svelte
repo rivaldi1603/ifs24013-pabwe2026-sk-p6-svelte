@@ -103,7 +103,7 @@
       <h1 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
         Profil Akun
       </h1>
-      <p class="text-sm text-slate-500 mt-1">
+      <p class="text-sm text-slate-600 mt-1">
         Kelola informasi identitas, foto profil, dan keamanan akun Anda.
       </p>
     </div>
@@ -127,6 +127,7 @@
           data-testid="upload-profile-photo-btn"
           class="absolute bottom-0 right-0 p-2 rounded-full bg-indigo-600 hover:bg-indigo-700 text-white shadow-md cursor-pointer transition-transform hover:scale-105"
           title="Ubah Foto Profil"
+          aria-label="Ubah Foto Profil"
         >
           {#if loadingPhoto}
             <LoaderCircle size={16} class="animate-spin" />
@@ -145,7 +146,7 @@
 
       <div class="text-center sm:text-left space-y-1">
         <h2 class="text-xl font-bold text-slate-800">{profile.name}</h2>
-        <p class="text-sm text-slate-500">{profile.email}</p>
+        <p class="text-sm text-slate-600">{profile.email}</p>
         <div class="pt-2">
           <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-indigo-50 text-indigo-700 border border-indigo-200/60">
             <Check size={14} /> Terverifikasi
@@ -161,12 +162,12 @@
           <div class="w-8 h-8 rounded-lg bg-indigo-50 text-indigo-600 flex items-center justify-center">
             <User size={18} />
           </div>
-          <h3 class="font-bold text-slate-800">Ubah Biodata</h3>
+          <h2 class="font-bold text-slate-800 text-base">Ubah Biodata</h2>
         </div>
 
         <form on:submit|preventDefault={handleUpdateProfile} class="space-y-4">
           <div>
-            <label for="profile-name-input" class="block text-xs font-bold text-slate-600 uppercase tracking-wider mb-1.5">
+            <label for="profile-name-input" class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">
               Nama Lengkap
             </label>
             <input
@@ -174,13 +175,13 @@
               type="text"
               data-testid="profile-name-input"
               bind:value={name}
-              class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-600 transition-all"
+              class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-600 transition-all text-slate-800"
               required
             />
           </div>
 
           <div>
-            <label for="profile-email-input" class="block text-xs font-bold text-slate-600 uppercase tracking-wider mb-1.5">
+            <label for="profile-email-input" class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">
               Alamat Email
             </label>
             <input
@@ -188,7 +189,7 @@
               type="email"
               data-testid="profile-email-input"
               bind:value={email}
-              class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-600 transition-all"
+              class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-600 transition-all text-slate-800"
               required
             />
           </div>
@@ -217,12 +218,12 @@
           <div class="w-8 h-8 rounded-lg bg-amber-50 text-amber-600 flex items-center justify-center">
             <ShieldCheck size={18} />
           </div>
-          <h3 class="font-bold text-slate-800">Keamanan & Password</h3>
+          <h2 class="font-bold text-slate-800 text-base">Keamanan & Password</h2>
         </div>
 
         <form on:submit|preventDefault={handleUpdatePassword} class="space-y-4">
           <div>
-            <label for="current-password-input" class="block text-xs font-bold text-slate-600 uppercase tracking-wider mb-1.5">
+            <label for="current-password-input" class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">
               Kata Sandi Saat Ini
             </label>
             <input
@@ -231,13 +232,13 @@
               data-testid="current-password-input"
               bind:value={oldPassword}
               placeholder="••••••"
-              class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-600 transition-all"
+              class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-600 transition-all placeholder:text-slate-500 text-slate-800"
               required
             />
           </div>
 
           <div>
-            <label for="new-password-input" class="block text-xs font-bold text-slate-600 uppercase tracking-wider mb-1.5">
+            <label for="new-password-input" class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">
               Kata Sandi Baru
             </label>
             <input
@@ -246,13 +247,13 @@
               data-testid="new-password-input"
               bind:value={newPassword}
               placeholder="Minimal 6 karakter"
-              class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-600 transition-all"
+              class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-600 transition-all placeholder:text-slate-500 text-slate-800"
               required
             />
           </div>
 
           <div>
-            <label for="confirm-password-input" class="block text-xs font-bold text-slate-600 uppercase tracking-wider mb-1.5">
+            <label for="confirm-password-input" class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">
               Ulangi Kata Sandi Baru
             </label>
             <input
@@ -261,7 +262,7 @@
               data-testid="confirm-password-input"
               bind:value={newPasswordConfirmation}
               placeholder="Konfirmasi kata sandi"
-              class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-600 transition-all"
+              class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-600 transition-all placeholder:text-slate-500 text-slate-800"
               required
             />
           </div>

@@ -1,6 +1,10 @@
-import Swal from "sweetalert2";
+async function getSwal() {
+  const { default: Swal } = await import("sweetalert2");
+  return Swal;
+}
 
-export function showErrorDialog(message) {
+export async function showErrorDialog(message) {
+  const Swal = await getSwal();
   return Swal.fire({
     title: "Terjadi Kesalahan",
     text: message,
@@ -15,7 +19,8 @@ export function showErrorDialog(message) {
   });
 }
 
-export function showWarningDialog(message) {
+export async function showWarningDialog(message) {
+  const Swal = await getSwal();
   return Swal.fire({
     title: "Peringatan",
     text: message,
@@ -30,7 +35,8 @@ export function showWarningDialog(message) {
   });
 }
 
-export function showSuccessDialog(message) {
+export async function showSuccessDialog(message) {
+  const Swal = await getSwal();
   return Swal.fire({
     title: "Tindakan Berhasil",
     text: message,
@@ -45,7 +51,8 @@ export function showSuccessDialog(message) {
   });
 }
 
-export function showConfirmDialog(message) {
+export async function showConfirmDialog(message) {
+  const Swal = await getSwal();
   return Swal.fire({
     title: "Konfirmasi",
     text: message,

@@ -79,11 +79,11 @@
       <div class="space-y-6">
         <div>
           <p
-            class="px-3 text-xs font-bold uppercase tracking-wider text-slate-400"
+            class="px-3 text-xs font-bold uppercase tracking-wider text-slate-600"
           >
             Menu Utama
           </p>
-          <nav class="mt-3 space-y-1">
+          <nav aria-label="Menu Utama" class="mt-3 space-y-1">
             {#each navItems as item (item.to)}
               {@const active = isItemActive(item, $currentPath)}
               <a
@@ -91,7 +91,7 @@
                 on:click|preventDefault={() => handleNav(item.to)}
                 class="group flex items-center justify-between px-3.5 py-2.5 rounded-xl text-sm font-medium transition-all {active
                   ? 'bg-indigo-600 text-white shadow-md shadow-indigo-600/25 font-semibold'
-                  : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'}"
+                  : 'text-slate-700 hover:text-slate-900 hover:bg-slate-100'}"
               >
                 <div class="flex items-center gap-3">
                   <svelte:component
@@ -99,7 +99,7 @@
                     size={20}
                     class={active
                       ? "text-white"
-                      : "text-slate-400 group-hover:text-slate-600"}
+                      : "text-slate-500 group-hover:text-slate-700"}
                   />
                   <span>{item.label}</span>
                 </div>

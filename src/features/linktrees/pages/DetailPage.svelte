@@ -117,7 +117,7 @@
 {#if !profile || !linkTree}
   <div class="flex flex-col items-center justify-center py-20">
     <div class="w-8 h-8 border-4 border-indigo-600 border-t-transparent rounded-full animate-spin"></div>
-    <p class="text-sm font-medium text-slate-500 mt-3">Memuat detail link tree...</p>
+    <p class="text-sm font-medium text-slate-600 mt-3">Memuat detail link tree...</p>
   </div>
 {:else}
   <div class="space-y-6 max-w-4xl mx-auto animate-in fade-in duration-300">
@@ -207,7 +207,7 @@
         {/if}
 
         <!-- Author & Timestamps -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4 border-t border-slate-100 text-xs text-slate-500">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4 border-t border-slate-100 text-xs text-slate-600">
           <div class="flex items-center gap-2.5">
             {#if linkTree.author?.photo}
               <img
@@ -222,7 +222,7 @@
             {/if}
             <div>
               <p class="font-semibold text-slate-800">{linkTree.author?.name || "Pembuat"}</p>
-              <p class="text-[11px] text-slate-400">Pemilik Link Tree</p>
+              <p class="text-[11px] text-slate-600">Pemilik Link Tree</p>
             </div>
           </div>
 
@@ -241,7 +241,7 @@
           <h2 class="text-xl font-bold text-slate-900 tracking-tight">
             Daftar Tautan
           </h2>
-          <p class="text-xs text-slate-500 mt-0.5">
+          <p class="text-xs text-slate-600 mt-0.5">
             Kelola tautan yang akan dibagikan kepada pengunjung
           </p>
         </div>
@@ -263,7 +263,7 @@
             <Link size={24} />
           </div>
           <p class="text-sm font-semibold text-slate-700">Belum ada tautan</p>
-          <p class="text-xs text-slate-400 mt-1">
+          <p class="text-xs text-slate-600 mt-1">
             Klik tombol "Tambah Tautan" untuk menambahkan tautan pertama.
           </p>
         </div>
@@ -279,9 +279,9 @@
                   <Link size={18} />
                 </div>
                 <div class="min-w-0">
-                  <h4 class="text-sm font-bold text-slate-900 truncate">
+                  <h3 class="text-sm font-bold text-slate-900 truncate">
                     {item.title}
-                  </h4>
+                  </h3>
                   <a
                     href={item.url}
                     target="_blank"
@@ -299,8 +299,9 @@
                   type="button"
                   data-testid={`edit-item-btn-${item.id}`}
                   on:click={() => handleEditItem(item)}
-                  class="p-2 rounded-xl text-slate-500 hover:text-amber-600 hover:bg-amber-50 transition-colors"
+                  class="p-2 rounded-xl text-slate-600 hover:text-amber-600 hover:bg-amber-50 transition-colors"
                   title="Ubah Tautan"
+                  aria-label="Ubah Tautan"
                 >
                   <Pencil size={16} />
                 </button>
@@ -308,8 +309,9 @@
                   type="button"
                   data-testid={`delete-item-btn-${item.id}`}
                   on:click={() => handleDeleteItem(item.id)}
-                  class="p-2 rounded-xl text-slate-500 hover:text-red-600 hover:bg-red-50 transition-colors"
+                  class="p-2 rounded-xl text-slate-600 hover:text-red-600 hover:bg-red-50 transition-colors"
                   title="Hapus Tautan"
+                  aria-label="Hapus Tautan"
                 >
                   <Trash2 size={16} />
                 </button>
