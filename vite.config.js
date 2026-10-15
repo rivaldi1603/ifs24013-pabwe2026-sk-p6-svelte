@@ -23,6 +23,28 @@ export default defineConfig(({ mode }) => {
     },
     build: {
       chunkSizeWarningLimit: 1500,
+      rollupOptions: {
+        output: {
+          manualChunks(id) {
+            const normalizedId = id.replace(/\\/g, "/");
+            if (normalizedId.includes("/node_modules/lucide-svelte/")) {
+              return "lucide";
+            }
+            if (normalizedId.includes("/node_modules/svelte/")) {
+              return "vendor-svelte";
+            }
+            if (normalizedId.includes("/src/features/auth/")) {
+              return "auth";
+            }
+            if (normalizedId.includes("/src/features/users/")) {
+              return "users";
+            }
+            if (normalizedId.includes("/src/features/linktrees/")) {
+              return "linktrees";
+            }
+          },
+        },
+      },
     },
     define: {
       DELCOM_BASEURL: JSON.stringify(
