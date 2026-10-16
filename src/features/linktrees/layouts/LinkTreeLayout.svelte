@@ -56,7 +56,7 @@
   <main id="main-content" class="min-h-screen flex items-center justify-center bg-slate-50" aria-busy="true">
     <div class="flex flex-col items-center gap-3">
       <div class="w-10 h-10 border-4 border-indigo-600 border-t-transparent rounded-full animate-spin"></div>
-      <p class="text-sm font-medium text-slate-700">Memuat sesi pengguna...</p>
+      <h1 class="text-sm font-medium text-slate-700">Memuat sesi pengguna...</h1>
     </div>
   </main>
 {:else}
