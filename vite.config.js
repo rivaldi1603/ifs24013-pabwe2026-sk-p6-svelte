@@ -31,6 +31,10 @@ function inlineCssPlugin() {
 
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), "");
+  const apiTarget = new URL(
+    env.VITE_DELCOM_BASEURL || "https://open-api.delcom.org/api/v1"
+  );
+  const apiPath = apiTarget.pathname.replace(/\/$/, "");
 
   return {
     plugins: [
@@ -43,6 +47,13 @@ export default defineConfig(({ mode }) => {
     ],
     server: {
       port: Number(env.APP_PORT) || 3004,
+      proxy: {
+        "/delcom-api": {
+          target: apiTarget.origin,
+          changeOrigin: true,
+          rewrite: (path) => path.replace(/^\/delcom-api/, apiPath),
+        },
+      },
     },
     preview: {
       port: Number(env.APP_PORT) || 3004,
@@ -83,9 +94,7 @@ export default defineConfig(({ mode }) => {
       },
     },
     define: {
-      DELCOM_BASEURL: JSON.stringify(
-        env.VITE_DELCOM_BASEURL || "https://open-api.delcom.org/api/v1"
-      ),
+      DELCOM_BASEURL: JSON.stringify("/delcom-api"),
     },
     test: {
       globals: true,
@@ -98,6 +107,7 @@ export default defineConfig(({ mode }) => {
         include: ["src/**/*.{js,svelte}"],
         exclude: [
           "src/main.js",
+          "src/trustedTypes.js",
           "src/setupTests.js",
           "src/test-utils.js",
           "**/*.test.{js,jsx}",

@@ -1,3 +1,4 @@
+import "./trustedTypes.js";
 import { mount } from "svelte";
 import App from "./App.svelte";
 import "./index.css";
