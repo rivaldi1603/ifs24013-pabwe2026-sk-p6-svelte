@@ -4,6 +4,31 @@ import { svelteTesting } from "@testing-library/svelte/vite";
 import tailwindcss from "@tailwindcss/vite";
 import process from "process";
 
+// Inline the built CSS into index.html to avoid a render-blocking stylesheet request.
+function inlineCssPlugin() {
+  return {
+    name: "inline-css-into-html",
+    apply: "build",
+    enforce: "post",
+    generateBundle(_options, bundle) {
+      const htmlFile = Object.values(bundle).find(
+        (file) => file.type === "asset" && file.fileName.endsWith(".html")
+      );
+      if (!htmlFile) return;
+
+      let html = String(htmlFile.source);
+      const linkRegex = /<link[^>]*rel="stylesheet"[^>]*href="\/?([^"]+\.css)"[^>]*>/g;
+      html = html.replace(linkRegex, (match, href) => {
+        const cssAsset = bundle[href];
+        if (!cssAsset || cssAsset.type !== "asset") return match;
+        delete bundle[href];
+        return `<style>${cssAsset.source}</style>`;
+      });
+      htmlFile.source = html;
+    },
+  };
+}
+
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), "");
 
@@ -14,6 +39,7 @@ export default defineConfig(({ mode }) => {
       }),
       tailwindcss(),
       svelteTesting(),
+      inlineCssPlugin(),
     ],
     server: {
       port: Number(env.APP_PORT) || 3004,
